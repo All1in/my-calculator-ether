@@ -1,10 +1,13 @@
-import './App.css';
+import MetaConnection from './components/MetaConnection/MetaConnection';
+import { Layout } from 'antd';
+import './styles/App.css';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      App Component
-    </div>
+    <Layout>
+      <MetaConnection />
+    </Layout>
   );
 }
 
