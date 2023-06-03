@@ -22,7 +22,8 @@ const MetaConnection = () => {
         getUserBalance(newAccount.toString())
     }
 
-    const connectWallethandler = () => {
+    const connectWallethandler = (event) => {
+        event.preventDefault()
         if(window.ethereum) {
             window.ethereum.request({method: 'eth_requestAccounts'})  
                   .then((result) => {
@@ -52,9 +53,10 @@ const MetaConnection = () => {
         <div 
             className='metamask-container'
         >
-            <Title level={2}>Connect your MetaMask</Title>
+            <Title level={2}>Connect your MetaMask here</Title>
             
             <Button 
+                style={{ marginTop: '20px' }}
                 type='primary'
                 onClick={connectWallethandler}
             >
