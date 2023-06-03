@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { AccountContext } from '../../context/AccountContext';
+import { useContext, useState } from 'react'
 import { Typography, Button } from 'antd'
 import { ethers } from 'ethers'
 import './MetaConnection.css'
@@ -7,13 +8,18 @@ const { Title } = Typography;
 
 const MetaConnection = () => {
     const [errorMessage, setErrorMessage] = useState(null)
-    const [defaultAccount, setDefaultAccount] = useState('no address specified')
+    // const [defaultAccount, setDefaultAccount] = useState('no address specified')
     const [userBalance, setUserBalance] = useState('no money on balance')
-    const [connButtonText, setConnButtonText] = useState('Connect Wallet')
+    // const [connButtonText, setConnButtonText] = useState('Connect Wallet')
+    const { defaultAccount, setDefaultAccount } = useContext(AccountContext)
 
+    console.log('====================================');
+    console.log('defaultAccount', defaultAccount);
+    console.log('====================================');
+    
     const accountChangedHandler = newAccount => {
         setDefaultAccount(newAccount)
-        getUserBalance(newAccount)
+        getUserBalance(newAccount.toString())
     }
 
     const connectWallethandler = () => {
