@@ -8,14 +8,9 @@ const { Title } = Typography;
 
 const MetaConnection = () => {
     const [errorMessage, setErrorMessage] = useState(null)
-    // const [defaultAccount, setDefaultAccount] = useState('no address specified')
     const [userBalance, setUserBalance] = useState('no money on balance')
-    // const [connButtonText, setConnButtonText] = useState('Connect Wallet')
     const { defaultAccount, setDefaultAccount } = useContext(AccountContext)
 
-    console.log('====================================');
-    console.log('defaultAccount', defaultAccount);
-    console.log('====================================');
     
     const accountChangedHandler = newAccount => {
         setDefaultAccount(newAccount)

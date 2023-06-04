@@ -14,7 +14,7 @@ const CalculatorComponent = () => {
     setRequiredMarkType(requiredMarkValue);
   };
 
-  const { defaultAccount, usageCount } = useContext(AccountContext)
+  const { defaultAccount, usageOnCount } = useContext(AccountContext)
 
   return (
       <Form
@@ -64,7 +64,7 @@ const CalculatorComponent = () => {
           <Button type="primary" disabled> Calculate </Button>
         }
       </Form.Item>
-       { defaultAccount !== 'no address specified' ? <Text type="danger">Calculator used: { usageCount } </Text> : null } 
+       { defaultAccount !== 'no address specified' ? <Text type="danger">Calculator used: { usageOnCount } </Text> : null } 
     </Form>
   )
 };
