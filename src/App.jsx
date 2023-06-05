@@ -12,26 +12,25 @@ const App = () => {
   const [defaultAccount, setDefaultAccount] = useState('no address specified')
   const [usageOnCount, setUsageOnCount] = useState(null)
 
-  // const INFURA_ID = ''
-  const provider = new ethers.providers.JsonRpcProvider();
+  // const provider = new ethers.providers.JsonRpcProvider();
+  const provider = new ethers.providers.Web3Provider(window.ethereum)
   const contract = new ethers.Contract(contractAddress, contractABI, provider)
 
   const main = async () => {
     const usageCount = await contract.usageCount()
     setUsageOnCount(usageCount)
-  } 
+  }
 
   useEffect(() => {
     main()
-  }, []);
+  }, [usageOnCount])
 
-  // console.log('usageCount', usageCount);
 
   return (
     <Layout>
-      <AccountContext.Provider 
-          value = {{ 
-            defaultAccount, 
+      <AccountContext.Provider
+          value = {{
+            defaultAccount,
             setDefaultAccount,
             usageOnCount
           }}
