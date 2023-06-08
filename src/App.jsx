@@ -12,9 +12,12 @@ const App = () => {
   const [defaultAccount, setDefaultAccount] = useState('no address specified')
   const [usageOnCount, setUsageOnCount] = useState(null)
 
-  // const provider = new ethers.providers.JsonRpcProvider();
-  const provider = new ethers.providers.Web3Provider(window.ethereum)
+  const myUrl =  'https://twilight-damp-hill.discover.quiknode.pro/cd1b5e757feffa24fa7a88059a83c7058322edab/'
+  const provider = new ethers.providers.JsonRpcProvider(myUrl)
+  // const provider = new ethers.providers.Web3Provider(window.ethereum)
+  // const signer = provider.getSigner()
   const contract = new ethers.Contract(contractAddress, contractABI, provider)
+
 
   const main = async () => {
     const usageCount = await contract.usageCount()
@@ -23,7 +26,7 @@ const App = () => {
 
   useEffect(() => {
     main()
-  }, [usageOnCount])
+  }, [])
 
 
   return (
